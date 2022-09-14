@@ -1,7 +1,7 @@
 """
 """
 import os
-import django_heroku
+# import django_heroku
 
 from decouple import config
 from unipath import Path

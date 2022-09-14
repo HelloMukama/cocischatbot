@@ -105,25 +105,6 @@ DATABASES = {
     }
 }
 
-
-"""
-Host
-ec2-35-168-122-84.compute-1.amazonaws.com
-Database
-dh7fdqp2sct9c
-User
-cipnawgduungna
-Port
-5432
-Password
-ce7acb409083f05239e992479c7c018c7a8785f9446bb8e0b3a671249942dafc
-URI
-postgres://cipnawgduungna:ce7acb409083f05239e992479c7c018c7a8785f9446bb8e0b3a671249942dafc@ec2-35-168-122-84.compute-1.amazonaws.com:5432/dh7fdqp2sct9c
-Heroku CLI
-heroku pg:psql postgresql-fluffy-65232 --app cocischatbott
-
-"""
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

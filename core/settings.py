@@ -1,7 +1,7 @@
 """
 """
 import os
-# import django_heroku
+import django_heroku
 
 from decouple import config
 from unipath import Path
@@ -21,8 +21,8 @@ SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 # load production server from .env
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cocischatbott.herokuapp.com', config('SERVER', default='127.0.0.1')]
-ALLOWED_HOSTS = ['cocischatbott.herokuapp.com', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cocischatbott.herokuapp.com', config('SERVER', default='127.0.0.1')]
+# ALLOWED_HOSTS = ['cocischatbott.herokuapp.com', ]
 
 # Application definition
 
@@ -92,10 +92,36 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dh7fdqp2sct9c',
+        'USER': 'cipnawgduungna',
+        'PASSWORD': 'ce7acb409083f05239e992479c7c018c7a8785f9446bb8e0b3a671249942dafc',
+        'HOST': 'ec2-35-168-122-84.compute-1.amazonaws.com',
+        'PORT': 5432,
     }
 }
+
+
+"""
+Host
+ec2-35-168-122-84.compute-1.amazonaws.com
+Database
+dh7fdqp2sct9c
+User
+cipnawgduungna
+Port
+5432
+Password
+ce7acb409083f05239e992479c7c018c7a8785f9446bb8e0b3a671249942dafc
+URI
+postgres://cipnawgduungna:ce7acb409083f05239e992479c7c018c7a8785f9446bb8e0b3a671249942dafc@ec2-35-168-122-84.compute-1.amazonaws.com:5432/dh7fdqp2sct9c
+Heroku CLI
+heroku pg:psql postgresql-fluffy-65232 --app cocischatbott
+
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

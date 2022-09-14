@@ -168,6 +168,10 @@ STATICFILES_DIRS = (
     os.path.join(CORE_DIR, 'apps/static'),
 )
 
+# heroku
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
 # EMAIL_HOST = 'smtp.email-host-provider-domain.com'
 EMAIL_HOST = 'localhost'
 

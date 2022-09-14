@@ -1,7 +1,7 @@
 """
 """
 import os
-import django_heroku
+# import django_heroku
 
 from decouple import config
 from unipath import Path
@@ -186,5 +186,5 @@ LOGIN_EXEMPT_URLS = (  # urls a user can access while they are logged out
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Activate Django heroku
-django_heroku.settings(locals())
+# # Activate Django heroku
+# django_heroku.settings(locals())

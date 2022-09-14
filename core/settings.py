@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # 3rd party
     'thumbnails',
     'whitenoise.runserver_nostatic',
+    'rest_framework',
 
 
     # MY APPS

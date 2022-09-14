@@ -109,5 +109,4 @@ while True:
         break
     ints = predict_class(message)
     res = get_response(ints, intents)
-    print(r
-es)
+    print(res)

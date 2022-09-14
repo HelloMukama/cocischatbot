@@ -1,6 +1,8 @@
 """
 """
 import os
+import django_heroku
+
 from decouple import config
 from unipath import Path
 
@@ -19,7 +21,7 @@ SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 # load production server from .env
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cocischatbott.herokuapp.com', config('SERVER', default='127.0.0.1')]
 
 # Application definition
 
@@ -182,3 +184,6 @@ LOGIN_EXEMPT_URLS = (  # urls a user can access while they are logged out
 )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Activate Django heroku
+django_heroku.settings(locals())

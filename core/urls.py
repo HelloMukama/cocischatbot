@@ -3,6 +3,8 @@
 from django.contrib import admin
 from django.urls import path, include  # add this
 
+from chatbot import respond
+
 urlpatterns = [
     path('admin/', admin.site.urls),  # Django admin route
 
@@ -19,4 +21,9 @@ urlpatterns = [
     path("departments/", include("apps.departments.urls")),
     path("lecturer_offices/", include("apps.lecturer_offices.urls")),
     path("profile/", include("apps.profiles.urls")),
+
+
+    # Api for the tensorflow logic
+    path("getmsg/?query=", respond, name='getmsg'),
+
 ]

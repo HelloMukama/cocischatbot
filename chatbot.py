@@ -61,7 +61,7 @@ def respond(request):
         if namee.find('events') != -1:
             foo = ""
             res = Course.objects.all()
-            
+
             for name in res:
                 data = " organised by "
                 comma = ","

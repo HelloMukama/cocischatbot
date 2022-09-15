@@ -10,4 +10,4 @@ class ClassTimetable(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.timestamp
+        return "Entry 1"

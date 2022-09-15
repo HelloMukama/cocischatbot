@@ -16,9 +16,9 @@
           </h4>
         </div>
         <div class="card-body">
-
             <form method="post" action="{% url 'class_timetable_upload' %}" id="#">
 
+{% csrf_token %}
             <div class="file-upload-wrapper">
               <input type="file" id="input-file-now-custom-1"
                      class="file-upload"

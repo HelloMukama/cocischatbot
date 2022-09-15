@@ -11,9 +11,10 @@ from nltk.stem import WordNetLemmatizer
 # for a sort of combined tokenization and stemming
 from tensorflow.keras.models import load_model
 
-from rest_framework.response import Response
-from django.http import JsonResponse
-
+# from rest_framework.response import Response
+# from django.http import JsonResponse
+from django.http.response import JsonResponse
+from rest_framework.decorators import api_view
 
 # for loading the model that we created in training.py
 
@@ -32,14 +33,23 @@ model = load_model('chatbotmodel.h5')
 
 """-------------------------------------start added ----"""
 
+# class MyQueryView:
+#     def get_q(self, *args, **kwargs):
+#         query = self.request.GET.get("q", None)
+#         if query is not None:
+#             return query
+import requests
 
+
+@api_view(['GET', 'POST', ])
 def respond(request):
-    # Retrieve the name from url parameter
-    name = request.args.get("query", None)
-    ints = predict_class(name)
-    res = get_response(ints, intents)
-    # return Response({"response": res})
-    return JsonResponse({"response": res})
+    if request.method == 'GET':
+        # Retrieve the name from url parameter
+        # name = request.GET.get('query', None)
+        name = request.query_params.get('query', None)
+        ints = predict_class(name)
+        res = get_response(ints, intents)
+        return JsonResponse({"response": res})
 
 
 """-------------------------------------end added ----"""
@@ -111,7 +121,7 @@ print("Chatbot is now active")
 while True:
     message = input("Enter 'stop' to quit the chatbot:\n")
     if message == "stop":
-        print("\nChatbot stopped! Loading Django Development Server\n")
+        print("\nChatbot stopped! Loading Django Development Server...\n")
         break
     ints = predict_class(message)
     res = get_response(ints, intents)

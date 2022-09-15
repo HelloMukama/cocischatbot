@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include  # add this
 
 from chatbot import respond
+# from chatbot import MyQueryView
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Django admin route
@@ -25,5 +26,6 @@ urlpatterns = [
 
     # Api for the tensorflow logic
     path("api/getmsg/", respond, name='getmsg'),
+    # path("api/getmsg/", MyQueryView.as_view(), name='getmsg'),
 
 ]

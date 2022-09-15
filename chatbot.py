@@ -23,9 +23,6 @@ from apps.courses.models import Course
 from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
 
-from django.core.serializers import serialize
-import json
-
 # for loading the model that we created in training.py
 
 # create the lemmatizer to be used
@@ -59,20 +56,17 @@ def respond(request):
         # Retrieve the name from url parameter
         # name = request.GET.get('query', None)
         name = request.query_params.get('query', None)
+        
+        ints = predict_class(name)
+        res = get_response(ints, intents)
+        return JsonResponse({"response": res})
 
-        # print("===============" + name + "--------------")
 
-        # if "events" in name:
-        if Q(name__icontains="events"):
-
-            res = Course.objects.all()
-            res = json.loads(serialize('json', res))
-            return JsonResponse({"response": res})  # json resspose
-        else:
-            ints = predict_class(name)
-            res = get_response(ints, intents)
-            return JsonResponse({"response": res})
-
+# if Q(name__icontains="events"):
+# return JsonResponse({"response": "No events listed"})  # json resspose
+# res = Course.objects.all()
+# res = json.loads(serialize('json', res))
+# return JsonResponse({"response": res[1][1]})  # json resspose
 
 # function for lemmatizing and tokenizing the sentence
 def clean_up_sentence(sentence):

@@ -48,13 +48,6 @@ model = load_model('chatbotmodel.h5')
 
 """-------------------------------------start added ----"""
 
-# class MyQueryView:
-#     def get_q(self, *args, **kwargs):
-#         query = self.request.GET.get("q", None)
-#         if query is not None:
-#             return query
-import requests
-
 
 @api_view(['GET', 'POST', ])
 def respond(request):

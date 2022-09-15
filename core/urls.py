@@ -25,7 +25,8 @@ urlpatterns = [
 
 
     # Api for the tensorflow logic
-    path("api/getmsg/", respond, name='getmsg'),
+    # path("api/getmsg/", respond, name='getmsg'),
+    path("getmsg/", respond),
     # path("api/getmsg/", MyQueryView.as_view(), name='getmsg'),
 
 ]

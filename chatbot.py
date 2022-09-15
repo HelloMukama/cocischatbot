@@ -58,7 +58,7 @@ def respond(request):
         name = request.query_params.get('query', None)
         namee = name.lower()
 
-        if namee.find('events') != -1:
+        if namee.find('event') != -1:
             foo = ""
             res = Course.objects.all()
 

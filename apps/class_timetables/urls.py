@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 
 from apps.class_timetables import views
 
-from .jayson import upload_timetable_logic
+# from .jayson import upload_timetable_logic
 
 urlpatterns = [
 
@@ -14,5 +14,5 @@ urlpatterns = [
     path('class/upload_template/',
          views.TemplateView.as_view(template_name='class_timetables/class_timetables.html'),
          name='class_timetable_upload_template'),
-    path('class/upload/', upload_timetable_logic, name='class_timetable_upload'),
+    # path('class/upload/', upload_timetable_logic, name='class_timetable_upload'),
 ]

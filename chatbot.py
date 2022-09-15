@@ -56,36 +56,24 @@ def respond(request):
         # Retrieve the name from url parameter
         # name = request.GET.get('query', None)
         name = request.query_params.get('query', None)
+        namee = name.lower()
 
-        if name.find('events') != -1:
+        if namee.find('events') != -1:
             foo = ""
             res = Course.objects.all()
-            # print("yes")
-            # print(type(res))
+            
             for name in res:
                 data = " organised by "
                 comma = ","
                 ccc = " "
 
                 foo += str(ccc) + str(name.name) + str(data) + str(name.department)+str(comma)
-
-
             return JsonResponse({"response": foo})
         else:
             ints = predict_class(name)
             res = get_response(ints, intents)
             return JsonResponse({"response": res})
 
-        # ints = predict_class(name)
-        # res = get_response(ints, intents)
-        # return JsonResponse({"response": res})
-
-
-# if Q(name__icontains="events"):
-# return JsonResponse({"response": "No events listed"})  # json resspose
-# res = Course.objects.all()
-# res = json.loads(serialize('json', res))
-# return JsonResponse({"response": res[1][1]})  # json resspose
 
 # function for lemmatizing and tokenizing the sentence
 def clean_up_sentence(sentence):

@@ -7,7 +7,7 @@ class CourseForm(forms.ModelForm):
     name = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Course Name",
+                "placeholder": "Event Name",
                 "class": "form-control"
             }
         ))
@@ -22,7 +22,7 @@ class CourseEditForm(forms.ModelForm):
     name = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Course Name",
+                "placeholder": "Event Name",
                 "class": "form-control"
             }
         ))

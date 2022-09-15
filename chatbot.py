@@ -14,6 +14,10 @@ from nltk.stem import WordNetLemmatizer
 # for a sort of combined tokenization and stemming
 from tensorflow.keras.models import load_model
 
+from django.db.models import Q
+
+from apps.courses.models import Course
+
 # from rest_framework.response import Response
 # from django.http import JsonResponse
 from django.http.response import JsonResponse
@@ -46,10 +50,27 @@ def respond(request):
         return JsonResponse({"response": res})
 
 
+# @api_view(['GET', 'POST', ])
+# def respond(request):
+#     if request.method == 'GET':
+#         # Retrieve the name from url parameter
+#         # name = request.GET.get('query', None)
+#         name = request.query_params.get('query', None)
+#
+#         if "events" in name:
+#             # Course.objects.all()
+#             res = "events"
+#             return JsonResponse({"response": res})
+#         else:
+#             ints = predict_class(name)
+#             res = get_response(ints, intents)
+#             return JsonResponse({"response": res})
+
+
 # function for lemmatizing and tokenizing the sentence
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
+    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
 
 

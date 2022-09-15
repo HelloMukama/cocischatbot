@@ -127,7 +127,7 @@ print("Chatbot is now active")
 
 while True:
     try:
-        message = input()
+        message = input("")
     except EOFError:
         break
     if message == "quit":

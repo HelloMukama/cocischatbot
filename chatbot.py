@@ -33,7 +33,6 @@ model = load_model('chatbotmodel.h5')
 """-------------------------------------start added ----"""
 
 
-# @blueprint.route('/getmsg/', methods=['GET'])
 def respond(request):
     # Retrieve the name from url parameter
     name = request.args.get("query", None)
@@ -70,10 +69,13 @@ def predict_class(sentence):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
     res_index = np.argmax(res)
+
     global var
+
     var = 0
     if res[res_index] < 0.6:
         var = 1
+
     # specifies the level of uncertainity that is acceptable for our model prediction
     ERROR_THRESHOLD = 0.25
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
@@ -107,8 +109,9 @@ print("Chatbot is now active")
 
 # loop for running the chatbot
 while True:
-    message = input("")
-    if message == "quit":
+    message = input("Enter 'stop' to quit the chatbot:\n")
+    if message == "stop":
+        print("\nChatbot stopped! Loading Django Development Server\n")
         break
     ints = predict_class(message)
     res = get_response(ints, intents)

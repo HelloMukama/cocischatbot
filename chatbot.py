@@ -57,9 +57,28 @@ def respond(request):
         # name = request.GET.get('query', None)
         name = request.query_params.get('query', None)
 
-        ints = predict_class(name)
-        res = get_response(ints, intents)
-        return JsonResponse({"response": res})
+        if name.find('events') != -1:
+            foo = ""
+            res = Course.objects.all()
+            # print("yes")
+            # print(type(res))
+            for name in res:
+                data = " organised by "
+                comma = ","
+                ccc = " "
+
+                foo += str(ccc) + str(name.name) + str(data) + str(name.department)+str(comma)
+
+
+            return JsonResponse({"response": foo})
+        else:
+            ints = predict_class(name)
+            res = get_response(ints, intents)
+            return JsonResponse({"response": res})
+
+        # ints = predict_class(name)
+        # res = get_response(ints, intents)
+        # return JsonResponse({"response": res})
 
 
 # if Q(name__icontains="events"):

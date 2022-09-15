@@ -56,7 +56,7 @@ def respond(request):
         # Retrieve the name from url parameter
         # name = request.GET.get('query', None)
         name = request.query_params.get('query', None)
-        
+
         ints = predict_class(name)
         res = get_response(ints, intents)
         return JsonResponse({"response": res})

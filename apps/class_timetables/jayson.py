@@ -1,6 +1,6 @@
 # import fitz
 # import json
-# 
+#
 # from .models import ClassTimetable
 #
 #

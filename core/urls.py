@@ -24,6 +24,6 @@ urlpatterns = [
 
 
     # Api for the tensorflow logic
-    path("api/getmsg/?query=", respond, name='getmsg'),
+    path("api/getmsg/", respond, name='getmsg'),
 
 ]

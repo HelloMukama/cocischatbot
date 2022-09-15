@@ -14,8 +14,6 @@ urlpatterns = [
     path("", include("apps.home.urls")),
 
     # custom
-    # path("", include("apps.accounts.urls")),
-
     path("courses/", include("apps.courses.urls")),
     path("course_units/", include("apps.course_units.urls")),
     path("class_timetables/", include("apps.class_timetables.urls")),
@@ -28,6 +26,4 @@ urlpatterns = [
     # Api for the tensorflow logic
     # path("api/getmsg/", respond, name='getmsg'),
     path("getmsg/", respond),
-    # path("api/getmsg/", MyQueryView.as_view(), name='getmsg'),
-
 ]

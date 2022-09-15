@@ -126,7 +126,10 @@ def get_response(intents_list, intents_json):
 print("Chatbot is now active")
 
 while True:
-    message = input('')
+    try:
+        message = input()
+    except EOFError:
+        break
     if message == "quit":
         break
     ints = predict_class(message)

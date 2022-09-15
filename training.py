@@ -97,5 +97,4 @@ hist = model.fit(np.array(train_x), np.array(train_y), epochs=300, batch_size=5,
 model.save('chatbotmodel.h5', hist)
 
 # prompting for complete training
-print("D
-one")
+print("Done")

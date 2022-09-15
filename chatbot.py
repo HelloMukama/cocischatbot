@@ -7,11 +7,10 @@ import nltk
 nltk.download('punkt')
 
 from nltk.stem import WordNetLemmatizer
+
 # for a sort of combined tokenization and stemming
 from tensorflow.keras.models import load_model
-
 from rest_framework.response import Response
-
 
 # for loading the model that we created in training.py
 
@@ -28,8 +27,7 @@ classes = pickle.load(open('classes.pkl', 'rb'))
 # loading the model
 model = load_model('chatbotmodel.h5')
 
-
-"""-------------------------------------start added code from previous flask project """
+"""-------------------------------------start added ----"""
 
 
 # @blueprint.route('/getmsg/', methods=['GET'])
@@ -40,7 +38,8 @@ def respond(request):
     res = get_response(ints, intents)
     return Response({"response": res})
 
-"""-------------------------------------end added code from previous flask project """
+
+"""-------------------------------------end added ----"""
 
 
 # function for lemmatizing and tokenizing the sentence

@@ -13,8 +13,11 @@
                 <div class="card-header card-header-primary">
                   <h4 class="card-title" style="font-weight: 800;">
                       Courses at CoCIS
-                      <a href="{% url 'courses_create' %}" type="" class="btn btn-success pull-right">
-                          Add new Course
+                      <a href="{% url 'courses_create' %}" type="" class="btn btn-success">
+                          Add Course
+                      </a>
+                      <a href="{% url 'json_courses' %}" type="" class="btn btn-success pull-right">
+                          View / Export JSON
                       </a>
                   </h4>
 
@@ -32,7 +35,7 @@
                       <tbody>
                             {% for course in object_list %}
                         <tr>
-                          <td>#</td>
+                          <td>{{ course.id }}</td>
                           <td>{{ course.name }}</td>
                           <td>{{ course.department }}</td>
                           <td>{{ course.updated }}</td>

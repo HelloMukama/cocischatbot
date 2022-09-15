@@ -4,39 +4,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import UpdateView, DeleteView, DetailView, CreateView, ListView
+from django.views.generic import UpdateView, DeleteView, DetailView, CreateView, ListView, TemplateView
 
 from .forms import ClassTimetableForm, ClassTimetableEditForm
 from .mixins import FormUserNeededMixin, UserOwnerMixin
 from .models import ClassTimetable
-
-
-# @method_decorator(login_required, name='dispatch')
-class ClassTimetableCreateView(LoginRequiredMixin, FormUserNeededMixin, CreateView):
-    template_name = 'class_timetables/class_timetables.html'
-    model = ClassTimetable
-    form_class = ClassTimetableForm
-    initial = {'key': 'value'}
-
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(initial=self.initial)
-
-        all_class_timetables = ClassTimetable.objects.all()
-        class_timetables = all_class_timetables.order_by('-edited_date')[:25]
-
-        context = {'class_timetables': class_timetables, 'form': form}
-        return render(request, self.template_name, context)
-
-    def class_timetable(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-
-        if form.is_valid():
-            form.instance.owner = request.user
-            form.save()
-
-            return redirect(reverse('class_timetables:class_timetables'))
-
-        return redirect(reverse('class_timetables:class_timetables'))
 
 
 class ClassTimetableListView(LoginRequiredMixin, ListView):

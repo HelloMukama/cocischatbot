@@ -1,9 +1,17 @@
-import random  # for randomizing the response
-import json  # to be able to load the intents.json file
-import pickle  # for serialization purposes
-import numpy as np  # for bagging process
+import random
+# for randomizing the response
+
+import json
+# to be able to load the intents.json file
+
+import pickle
+# for serialization purposes
+
+import numpy as np
+# for bagging process
 
 import nltk
+
 nltk.download('punkt')
 
 # import nltk

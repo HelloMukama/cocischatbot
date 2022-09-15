@@ -46,8 +46,6 @@ classes = pickle.load(open('classes.pkl', 'rb'))
 # loading the model
 model = load_model('chatbotmodel.h5')
 
-"""-------------------------------------start added ----"""
-
 
 @api_view(['GET', 'POST', ])
 def respond(request):
@@ -58,9 +56,6 @@ def respond(request):
         ints = predict_class(name)
         res = get_response(ints, intents)
         return JsonResponse({"response": res})
-
-
-"""-------------------------------------end added ----"""
 
 
 # function for lemmatizing and tokenizing the sentence

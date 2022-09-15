@@ -23,6 +23,9 @@ from apps.courses.models import Course
 from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
 
+from django.core.serializers import serialize
+import json
+
 # for loading the model that we created in training.py
 
 # create the lemmatizer to be used
@@ -39,32 +42,36 @@ classes = pickle.load(open('classes.pkl', 'rb'))
 model = load_model('chatbotmodel.h5')
 
 
-@api_view(['GET', 'POST', ])
-def respond(request):
-    if request.method == 'GET':
-        # Retrieve the name from url parameter
-        # name = request.GET.get('query', None)
-        name = request.query_params.get('query', None)
-        ints = predict_class(name)
-        res = get_response(ints, intents)
-        return JsonResponse({"response": res})
-
-
 # @api_view(['GET', 'POST', ])
 # def respond(request):
 #     if request.method == 'GET':
 #         # Retrieve the name from url parameter
 #         # name = request.GET.get('query', None)
 #         name = request.query_params.get('query', None)
-#
-#         if "events" in name:
-#             # Course.objects.all()
-#             res = "events"
-#             return JsonResponse({"response": res})
-#         else:
-#             ints = predict_class(name)
-#             res = get_response(ints, intents)
-#             return JsonResponse({"response": res})
+#         ints = predict_class(name)
+#         res = get_response(ints, intents)
+#         return JsonResponse({"response": res})
+
+
+@api_view(['GET', 'POST', ])
+def respond(request):
+    if request.method == 'GET':
+        # Retrieve the name from url parameter
+        # name = request.GET.get('query', None)
+        name = request.query_params.get('query', None)
+
+        # print("===============" + name + "--------------")
+
+        # if "events" in name:
+        if Q(name__icontains="events"):
+
+            res = Course.objects.all()
+            res = json.loads(serialize('json', res))
+            return JsonResponse({"response": res})  # json resspose
+        else:
+            ints = predict_class(name)
+            res = get_response(ints, intents)
+            return JsonResponse({"response": res})
 
 
 # function for lemmatizing and tokenizing the sentence

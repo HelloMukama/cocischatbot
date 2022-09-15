@@ -10,7 +10,10 @@ from nltk.stem import WordNetLemmatizer
 
 # for a sort of combined tokenization and stemming
 from tensorflow.keras.models import load_model
+
 from rest_framework.response import Response
+from django.http import JsonResponse
+
 
 # for loading the model that we created in training.py
 
@@ -36,7 +39,8 @@ def respond(request):
     name = request.args.get("query", None)
     ints = predict_class(name)
     res = get_response(ints, intents)
-    return Response({"response": res})
+    # return Response({"response": res})
+    return JsonResponse({"response": res})
 
 
 """-------------------------------------end added ----"""

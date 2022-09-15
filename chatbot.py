@@ -2,9 +2,24 @@ import random  # for randomizing the response
 import json  # to be able to load the intents.json file
 import pickle  # for serialization purposes
 import numpy as np  # for bagging process
+
+# import nltk
+# nltk.download('punkt')
+
 import nltk
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
 
 nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
 
 from nltk.stem import WordNetLemmatizer
 
@@ -79,13 +94,10 @@ def predict_class(sentence):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
     res_index = np.argmax(res)
-
     global var
-
     var = 0
     if res[res_index] < 0.6:
         var = 1
-
     # specifies the level of uncertainity that is acceptable for our model prediction
     ERROR_THRESHOLD = 0.25
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
@@ -117,11 +129,9 @@ def get_response(intents_list, intents_json):
 
 print("Chatbot is now active")
 
-# loop for running the chatbot
 while True:
-    message = input("Enter 'stop' to quit the chatbot:\n")
-    if message == "stop":
-        print("\nChatbot stopped! Loading Django Development Server...\n")
+    message = input('')
+    if message == "quit":
         break
     ints = predict_class(message)
     res = get_response(ints, intents)

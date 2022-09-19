@@ -8,7 +8,7 @@
 {% block content %}
 
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
           <div class="card-header card-header-warning card-header-icon">
             <div class="card-icon">
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
           <div class="card-header card-header-success card-header-icon">
             <div class="card-icon">
@@ -34,7 +34,13 @@
             </div>
             <p class="card-category">Lecturers</p>
 {#            <h3 class="card-title">{{ user.objects.all.count }}</h3>#}
-            <h3 class="card-title">5</h3>
+            <h3 class="card-title">
+                {% if total_users_registered %}
+                    Number of products: {{ total_users_registered }}
+                {% else %}
+                    No total_users_registered.
+                {% endif %}
+            </h3>
           </div>
           <div class="card-footer">
             <div class="stats">
@@ -43,7 +49,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
           <div class="card-header card-header-danger card-header-icon">
             <div class="card-icon">
@@ -59,7 +65,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="card card-stats">
           <div class="card-header card-header-info card-header-icon">
             <div class="card-icon">
@@ -77,6 +83,7 @@
       </div>
     </div>
 
+{% comment %}
     <div class="row">
 
       <div class="col-md-4">
@@ -133,7 +140,7 @@
       </div>
 
     </div>
-
+{% endcomment %}
 
 {% endblock content %}
 

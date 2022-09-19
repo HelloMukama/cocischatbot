@@ -28,6 +28,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cocischatbott.herokuapp.com', config
 
 INSTALLED_APPS = [
     'rest_framework',
+    'bootstrap_datepicker_plus',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,14 +41,17 @@ INSTALLED_APPS = [
     # 'rest_framework',
     'thumbnails',
     'whitenoise.runserver_nostatic',
-
+    'widget_tweaks',
+    'bootstrap4',
 
     # MY APPS
     'apps.accounts',
     'apps.profiles',
     'apps.home',
-    'apps.courses',
+    # 'apps.courses',
+    'apps.events',
     'apps.lecturer_offices',
+    'apps.event_organisers',
     'apps.departments',
     'apps.course_units',
     'apps.class_timetables',
@@ -99,10 +104,10 @@ DATABASES = {
         # 'NAME': 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8lv71dun8h5cp',
-        'USER': 'iwbtfovuplxgml',
-        'PASSWORD': '580cb253032906bf4464817860f5a361a16718f216bd75af765b5346af44dda9',
-        'HOST': 'ec2-44-205-112-253.compute-1.amazonaws.com',
+        'NAME': 'd948or6i1f4rsc',
+        'USER': 'kovgnotaoxmglm',
+        'PASSWORD': '386640934c45a6d57fbe6293b3a67defd8b88fe0cc65b0e8b44b4b71bd668365',
+        'HOST': 'ec2-35-170-146-54.compute-1.amazonaws.com',
         'PORT': 5432,
     }
 }

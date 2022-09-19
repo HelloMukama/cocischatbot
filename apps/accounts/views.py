@@ -2,8 +2,9 @@ from braces import views as bracesviews
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import get_user_model
 from django.conf import settings
-from django.shortcuts import redirect, reverse
-from django.views.generic import CreateView
+from django.shortcuts import redirect, reverse, render
+from django.views.generic import CreateView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import SignupForm, LoginForm
 from apps.profiles.models import Profile
@@ -29,3 +30,9 @@ class AccountLoginView(bracesviews.AnonymousRequiredMixin, LoginView):
 
     def form_valid(self, form):
         return super(AccountLoginView, self).form_valid(form)
+
+
+def user_tot(request):
+    total_users_registered = User.objects.count()
+    context = {'total_users_registered': total_users_registered}
+    return render(request, "home/index.html", context)

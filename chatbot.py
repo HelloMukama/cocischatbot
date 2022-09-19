@@ -16,7 +16,7 @@ from tensorflow.keras.models import load_model
 
 from django.db.models import Q
 
-from apps.courses.models import Course
+from apps.events.models import Event
 
 # from rest_framework.response import Response
 # from django.http import JsonResponse
@@ -60,14 +60,19 @@ def respond(request):
 
         if namee.find('event') != -1:
             foo = ""
-            res = Course.objects.all()
+            res = Event.objects.all()
 
             for name in res:
-                data = " organised by "
-                comma = ","
+                organised_by = " organised by "
+                date_of_event = " date is "
+                location_of_event = " location is "
+                comma = " , "
                 ccc = " "
 
-                foo += str(ccc) + str(name.name) + str(data) + str(name.department)+str(comma)
+                foo += str(ccc) + str(name.name) + \
+                       str(organised_by) + str(name.organiser) +\
+                       str(location_of_event) + str(name.location) + \
+                       str(date_of_event) + str(name.event_date) + comma
             return JsonResponse({"response": foo})
         else:
             ints = predict_class(name)
@@ -75,7 +80,7 @@ def respond(request):
             return JsonResponse({"response": res})
 
 
-# function for lemmatizing and tokenizing the sentence
+# function for legitimating and tokenizing the sentence
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]

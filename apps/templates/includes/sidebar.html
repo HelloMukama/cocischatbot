@@ -18,12 +18,13 @@
           </li>
 
           <li class="nav-item {% if 'course_list' in segment %} active {% endif %}">
-            <a class="nav-link" href="{% url 'courses' %}">
+            <a class="nav-link" href="{% url 'events' %}">
               <i class="material-icons">content_paste</i>
               <p>Events</p>
             </a>
           </li>
 
+            {% comment %}
           <li class="nav-item {% if 'class_timetables' in segment %} active {% endif %}">
             <a class="nav-link" href="{% url 'class_timetables' %}">
               <i class="material-icons">content_paste</i>
@@ -37,6 +38,7 @@
               <p>Exam Timetables</p>
             </a>
           </li>
+            {% endcomment %}
 
           <li class="nav-item {% if 'profile' in segment %} active {% endif %}">
             <a class="nav-link" href="{% url 'show_self' %}">

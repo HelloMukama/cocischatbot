@@ -20,9 +20,9 @@ def index(request):
     total_users_registered = User.objects.count()
     total_events = Event.objects.count()
     total_event_organisers = EventOrganiser.objects.count()
-    print("--------------------------------")
-    print(total_event_organisers)
-    print("--------------------------------")
+    # print("--------------------------------")
+    # print(total_event_organisers)
+    # print("--------------------------------")
     context = {
         'segment': 'index',
         'total_users_registered': total_users_registered,

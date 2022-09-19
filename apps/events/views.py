@@ -8,10 +8,16 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import UpdateView, DeleteView, CreateView, ListView
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+from django.contrib.auth import get_user_model
 
 from .forms import EventForm, EventEditForm
 from .mixins import FormUserNeededMixin, UserOwnerMixin
 from .models import Event
+from apps.course_units.models import CourseUnit
+from apps.event_organisers.models import EventOrganiser
+
+
+User = get_user_model()
 
 
 # @method_decorator(login_required, name='dispatch')

@@ -8,14 +8,33 @@
 {% block content %}
 
     <div class="row">
+
       <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="card-icon">
+              <i class="fa fa-bank"></i>
+            </div>
+            <p class="card-category">Total Events</p>
+            <h3 class="card-title">{{ total_events }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">update</i> All time
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6">
+
         <div class="card card-stats">
           <div class="card-header card-header-warning card-header-icon">
             <div class="card-icon">
               <i class="material-icons">book</i>
             </div>
-            <p class="card-category">Total Courses</p>
-            <h3 class="card-title">4
+            <p class="card-category">Total Event Organisers</p>
+            <h3 class="card-title">{{ total_event_organisers }}
 {#              <small>and counting</small>#}
             </h3>
           </div>
@@ -32,14 +51,10 @@
             <div class="card-icon">
               <i class="material-icons">man</i>
             </div>
-            <p class="card-category">Lecturers</p>
+            <p class="card-category">Registered Lecturers</p>
 {#            <h3 class="card-title">{{ user.objects.all.count }}</h3>#}
             <h3 class="card-title">
-                {% if total_users_registered %}
-                    Number of products: {{ total_users_registered }}
-                {% else %}
-                    No total_users_registered.
-                {% endif %}
+                {{ total_users_registered }}
             </h3>
           </div>
           <div class="card-footer">
@@ -49,38 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">book</i>
-            </div>
-            <p class="card-category">Course Units</p>
-            <h3 class="card-title">12</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">update</i> All time
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-info card-header-icon">
-            <div class="card-icon">
-              <i class="fa fa-bank"></i>
-            </div>
-            <p class="card-category">Departments</p>
-            <h3 class="card-title">3</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">update</i> All time
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
 
 {% comment %}

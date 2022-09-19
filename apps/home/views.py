@@ -6,10 +6,29 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
+from django.contrib.auth import get_user_model
+
+from apps.course_units.models import CourseUnit
+from apps.event_organisers.models import EventOrganiser
+from apps.events.models import Event
+
+User = get_user_model()
+
 
 @login_required(login_url="/login/")
 def index(request):
-    context = {'segment': 'index'}
+    total_users_registered = User.objects.count()
+    total_events = Event.objects.count()
+    total_event_organisers = EventOrganiser.objects.count()
+    print("--------------------------------")
+    print(total_event_organisers)
+    print("--------------------------------")
+    context = {
+        'segment': 'index',
+        'total_users_registered': total_users_registered,
+        'total_events': total_events,
+        'total_event_organisers': total_event_organisers,
+    }
 
     html_template = loader.get_template('home/index.html')
     return HttpResponse(html_template.render(context, request))

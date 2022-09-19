@@ -9,6 +9,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import SignupForm, LoginForm
 from apps.profiles.models import Profile
 
+from apps.course_units.models import CourseUnit
+from apps.event_organisers.models import EventOrganiser
+from apps.events.models import Event
+
 User = get_user_model()
 
 
@@ -32,7 +36,3 @@ class AccountLoginView(bracesviews.AnonymousRequiredMixin, LoginView):
         return super(AccountLoginView, self).form_valid(form)
 
 
-def user_tot(request):
-    total_users_registered = User.objects.count()
-    context = {'total_users_registered': total_users_registered}
-    return render(request, "home/index.html", context)
